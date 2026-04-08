@@ -29,6 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         // Update active link
         updateActiveLink();
+        
+        // Close mobile menu on scroll
+        if (window.innerWidth <= 992 && navMenu?.classList.contains('active')) {
+            menuToggle?.classList.remove('active');
+            navMenu?.classList.remove('active');
+        }
     });
 
     // Mobile Menu

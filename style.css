@@ -60,6 +60,23 @@ img {
     backface-visibility: hidden;
 }
 
+/* Touch-friendly interactions for mobile */
+button, a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+@media (hover: none) and (pointer: coarse) {
+    /* Touch devices - larger touch targets */
+    button, [role="button"], .filter-table, .filter-option {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .filter-head, .filter-selected {
+        min-height: 44px;
+    }
+}
+
 /* NAVBAR */
 .navbar {
     position: fixed;
@@ -175,6 +192,7 @@ img {
         transition: right 0.4s ease;
         box-shadow: -5px 0 20px rgba(0,0,0,0.1);
         z-index: 100;
+        padding-top: 80px;
     }
 
     .nav-links.active {
@@ -190,6 +208,18 @@ img {
     }
     .menu-toggle.active span:nth-child(3) {
         transform: translateY(-9px) rotate(-45deg);
+    }
+}
+
+/* Extra small phones - adjust nav menu */
+@media (max-width: 480px) {
+    .nav-links {
+        width: 100%;
+        gap: 1.5rem;
+    }
+
+    .nav-links li a {
+        font-size: 0.95rem;
     }
 }
 
@@ -212,7 +242,8 @@ img {
 }
 
 .hero-text {
-    width: 55%; 
+    width: 50%; 
+    max-width: 600px;
     padding-top: 5rem;
     position: relative;
     z-index: 2;
@@ -303,11 +334,14 @@ img {
 
 .hero-headline {
     font-family: 'JT Distressed', sans-serif;
-    font-size: clamp(3rem, 5vw, 6rem);
-    line-height: 1.05;
+    font-size: clamp(1.8rem, 5vw, 4.5rem);
+    line-height: 1.1;
     color: var(--text-grey);
     text-transform: uppercase;
     margin-bottom: 2rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 /* TRUST HEADER SECTION */
@@ -699,4 +733,439 @@ img {
 .fade-in-on-scroll.in-view {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* ============ MOBILE RESPONSIVE DESIGN ============ */
+
+/* Mobile: Small phones (320px - 640px) */
+@media (max-width: 640px) {
+    /* Navbar */
+    .nav-container {
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    .nav-links {
+        width: 100%;
+        gap: 1.5rem;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding-top: 8vh;
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-content {
+        width: 100%;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .hero-text {
+        width: 100%;
+        padding: 20px;
+        padding-top: 0;
+        z-index: 2;
+    }
+
+    .hero-graphics {
+        width: 100%;
+        justify-content: center;
+        z-index: 1;
+    }
+
+    .hero-group-img {
+        width: 80%;
+        max-width: 280px;
+        height: auto;
+        margin-top: 15px;
+        transform: translate(0, 0);
+        position: static;
+    }
+
+    .hero-headline {
+        font-family: 'JT Distressed', sans-serif;
+        font-size: 26px;
+        font-weight: 700;
+        line-height: 1.3;
+        color: var(--text-grey);
+        text-transform: uppercase;
+        margin-bottom: 12px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .hero-headline span {
+        color: inherit;
+        font-weight: inherit;
+    }
+
+    .hero-logo-text {
+        font-size: clamp(1.8rem, 4vw, 3rem);
+    }
+
+    .hero-subtext {
+        font-size: 1rem;
+    }
+
+    .tagline-wrapper {
+        padding: 0.6rem 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .brand-tagline {
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+    }
+
+    /* Trust Section */
+    .trust-title {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        padding-bottom: 10px;
+        margin-bottom: 1rem;
+    }
+
+    /* Content Slides */
+    .slide {
+        padding: 3rem 0;
+        min-height: auto;
+    }
+
+    .slide-container {
+        width: 100%;
+        flex-direction: column-reverse;
+        gap: 1.5rem;
+        padding: 0 15px;
+    }
+
+    .slide-image {
+        flex: 1;
+    }
+
+    .rounded-stroke-img {
+        max-width: 100%;
+        width: 100%;
+        transform: scale(1);
+    }
+
+    .img-frame {
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+
+    .slide-text {
+        flex: 1;
+    }
+
+    .patient-heading {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        margin-bottom: 0.5rem;
+    }
+
+    .patient-subheading {
+        font-size: clamp(1rem, 2vw, 1.3rem);
+    }
+
+    .patient-body {
+        font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    }
+
+    .patient-line {
+        margin-bottom: 1rem;
+    }
+
+    /* Doctor Section */
+    .doctor-container {
+        gap: 2rem;
+        padding: 0 15px;
+    }
+
+    .doctor-layout-row {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .left-section {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .doctor-title {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    .dropdown-row {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+
+    #doc-dropdown { 
+        width: 100%; 
+    }
+    
+    #city-dropdown { 
+        width: 100%; 
+    }
+
+    .doctor-image-content {
+        width: 100%;
+        justify-content: center;
+        padding-right: 0;
+    }
+
+    .image-container {
+        width: 100%;
+        max-width: 300px;
+        height: 350px;
+    }
+
+    .doctor-info {
+        margin-top: 20px;
+        margin-left: 0;
+    }
+
+    .doctor-info h2 {
+        font-size: 1.5rem;
+    }
+
+    .doctor-info p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Tablets and Medium devices (641px - 992px) */
+@media (max-width: 992px) and (min-width: 641px) {
+    /* Hero Section */
+    .hero-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .hero-text {
+        width: 100%;
+        padding-top: 1rem;
+    }
+
+    .hero-graphics {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero-group-img {
+        width: 100%;
+        max-width: 100%;
+        transform: translate(0, 0);
+    }
+
+    .hero-headline {
+        font-size: clamp(2rem, 4vw, 3rem);
+    }
+
+    .hero-logo-text {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+    }
+
+    /* Slides */
+    .slide-container {
+        flex-direction: column-reverse;
+        gap: 2rem;
+    }
+
+    .rounded-stroke-img {
+        transform: scale(1);
+    }
+
+    /* Doctor Section */
+    .doctor-layout-row {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .left-section {
+        max-width: 100%;
+    }
+
+    .dropdown-row {
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    #doc-dropdown { 
+        width: 150px; 
+    }
+    
+    #city-dropdown { 
+        width: 110px; 
+    }
+
+    .doctor-image-content {
+        width: 100%;
+        justify-content: center;
+        padding-right: 0;
+    }
+
+    .image-container {
+        width: 100%;
+        max-width: 350px;
+        height: 400px;
+    }
+}
+
+/* Small devices (max-width: 768px) - General fixes */
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .nav-container {
+        width: 100%;
+        max-width: none;
+        padding: 0 1rem;
+    }
+
+    .nav-links {
+        width: 80%;
+    }
+
+    .nav-logo img {
+        height: 40px;
+    }
+
+    /* Hero & Sections Padding */
+    .hero {
+        padding: 20px 10px;
+        padding-top: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        min-height: auto;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-text {
+        width: 100%;
+        padding: 25px 15px;
+        z-index: 2;
+        max-width: 100%;
+    }
+
+    .hero-text h1 {
+        font-family: 'JT Distressed', sans-serif;
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 1.3;
+        color: var(--text-grey);
+        text-align: center;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .hero-text h1 span {
+        color: inherit;
+        font-weight: inherit;
+    }
+
+    .hero-text p {
+        font-size: 14px;
+        color: #555;
+        margin-top: 10px;
+    }
+
+    .hero-graphics {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        z-index: 1;
+    }
+
+    .hero-graphics img {
+        width: 80%;
+        max-width: 300px;
+        height: auto;
+        margin-top: 20px;
+        position: static;
+    }
+
+    .hero-group-img {
+        transform: none !important;
+    }
+
+    .trust-container {
+        padding: 3rem 1rem;
+    }
+
+    .slide {
+        padding: 3rem 1rem;
+    }
+
+    .doctor-section {
+        padding: 4rem 1rem 6rem 1rem;
+    }
+
+    /* Fixed-width containers become responsive */
+    .hero-content,
+    .slide-container,
+    .doctor-container,
+    .trust-title {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Font adjustments */
+    .nav-links li a {
+        font-size: 1rem;
+    }
+
+    .patient-heading {
+        margin-bottom: 0.5rem;
+    }
+
+    .patient-line {
+        margin-bottom: 0.8rem;
+    }
+
+    /* Dropdown styling for mobile */
+    .filter-table {
+        z-index: 20;
+    }
+
+    .filter-list {
+        max-height: 200px;
+        overflow-y: auto;
+    }
+}
+
+/* Landscape mode adjustments (wide and short) */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding-top: 6vh;
+    }
+
+    .slide {
+        min-height: auto;
+        padding: 2rem 0;
+    }
+
+    .hero-headline {
+        margin-bottom: 0.5rem;
+    }
+
+    .hero-brand {
+        margin-bottom: 1rem;
+    }
 }
