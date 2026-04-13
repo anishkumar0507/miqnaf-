@@ -964,13 +964,13 @@ button, a {
 
     /* Doctor Section */
     .doctor-container {
-        gap: 2rem;
-        padding: 0 15px;
+        gap: 2.5rem;
+        padding: 0 18px;
     }
 
     .doctor-layout-row {
         flex-direction: column;
-        gap: 2rem;
+        gap: 2.5rem;
     }
 
     .left-section {
@@ -983,23 +983,42 @@ button, a {
     }
 
     .dropdown-row {
-        flex-direction: column;
-        gap: 10px;
-        margin-bottom: 30px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-bottom: 40px;
     }
 
     #doc-dropdown { 
-        width: 100%; 
+        width: calc(50% - 7px); 
     }
     
     #city-dropdown { 
-        width: 100%; 
+        width: calc(50% - 7px); 
+    }
+
+    .filter-table {
+        min-width: 0;
+    }
+
+    .filter-head,
+    .filter-selected {
+        font-size: 11px;
+        padding-left: 11px;
+        padding-right: 11px;
+        height: 44px;
     }
 
     .doctor-image-content {
         width: 100%;
         justify-content: center;
         padding-right: 0;
+    }
+
+    #video-container {
+        width: min(100%, 300px);
+        height: 350px;
+        margin: 0 auto;
     }
 
     .image-container {
@@ -1009,16 +1028,17 @@ button, a {
     }
 
     .doctor-info {
-        margin-top: 20px;
+        margin-top: 24px;
         margin-left: 0;
+        justify-content: center;
     }
 
     .doctor-info h2 {
-        font-size: 1.5rem;
+        font-size: 1.35rem;
     }
 
     .doctor-info p {
-        font-size: 0.9rem;
+        font-size: 0.82rem;
     }
 }
 
@@ -1093,6 +1113,12 @@ button, a {
         padding-right: 0;
     }
 
+    #video-container {
+        width: min(100%, 350px);
+        height: 400px;
+        margin: 0 auto;
+    }
+
     .image-container {
         width: 100%;
         max-width: 350px;
@@ -1138,7 +1164,7 @@ button, a {
 
     .hero-text {
         width: 100%;
-        padding: 25px 15px;
+        padding: 42px 15px 25px;
         z-index: 2;
         max-width: 100%;
     }
