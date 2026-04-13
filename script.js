@@ -101,18 +101,18 @@ function initializeDoctorSystem() {
         ],
         delhi: [
             {
-                doctor: 'Dr Hemant Kalra',
-                spec: 'Director - Pulmonology',
+                doctor: 'Dr Sonam Solanki',
+                spec: 'Pulmonologist',
                 type: 'youtube',
-                video: 'https://www.youtube.com/embed/ZQjPo5hFQMY?autoplay=1&mute=1&loop=1&playlist=ZQjPo5hFQMY'
+                video: 'https://www.youtube.com/embed/o1kJtgxqEh0?autoplay=1&mute=1&loop=1&playlist=o1kJtgxqEh0'
             }
         ],
         mumbai: [
             {
                 doctor: 'Dr Sameer Garde',
                 spec: 'Interventional Pulmonologist',
-                type: 'local',
-                video: 'mumbai.mp4'
+                type: 'youtube',
+                video: 'https://www.youtube.com/embed/YRqyq7Naqf8?autoplay=1&mute=1&loop=1&playlist=YRqyq7Naqf8'
             },
             {
                 doctor: 'Dr Swami Pawar',
