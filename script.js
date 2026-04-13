@@ -1,5 +1,7 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Navbar Scroll & Scroll Spy
+console.log('🔴 SCRIPT.JS LOADED');
+
+// ========== NAVBAR & SCROLL ==========
+function initializeNavbar() {
     const navbar = document.querySelector('.navbar');
     const navLinks = document.querySelectorAll('.nav-link');
     const menuToggle = document.getElementById('menu-toggle');
@@ -21,68 +23,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.addEventListener('scroll', () => {
-        // Scrolled Class
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
-        // Update active link
         updateActiveLink();
-        
-        // Close mobile menu on scroll
         if (window.innerWidth <= 992 && navMenu?.classList.contains('active')) {
             menuToggle?.classList.remove('active');
             navMenu?.classList.remove('active');
         }
     });
 
-    // Mobile Menu
     menuToggle?.addEventListener('click', () => {
         menuToggle.classList.toggle('active');
         navMenu.classList.toggle('active');
     });
 
-    // Close menu on link click
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             menuToggle?.classList.remove('active');
             navMenu?.classList.remove('active');
         });
     });
+}
 
-    // Intersection Observer for Scroll Animations
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.2 // Trigger when 20% of element is visible
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
+// ========== SCROLL ANIMATIONS ==========
+function initializeScrollAnimations() {
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.2 };
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('in-view');
-                // Optional: stop observing once it has faded in
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    const animatedElements = document.querySelectorAll('.fade-in-on-scroll');
-    animatedElements.forEach(el => {
-        observer.observe(el);
-    });
+    document.querySelectorAll('.fade-in-on-scroll').forEach(el => observer.observe(el));
+}
 
-    // Interactivity for Doctor Dropdown
-    const docOptions = document.querySelectorAll('.doc-option');
-    const selectedText = document.getElementById('doctor-selected-text');
-    const displayName = document.getElementById('display-name');
-    const displaySpec = document.getElementById('display-spec');
-    const displayImg = document.getElementById('display-img');
-    const cityOptions = document.querySelectorAll('.city-option');
-    const selectedCity = document.getElementById('city-selected-text');
-
-    // Toggle Dropdown logic via css classes for complex border-radius handling
+// ========== DROPDOWN TOGGLE ==========
+function initializeDropdowns() {
     const toggleList = (table) => {
         const isOpen = table.classList.contains('is-open');
         document.querySelectorAll('.filter-table').forEach(t => t.classList.remove('is-open'));
@@ -96,47 +78,154 @@ document.addEventListener('DOMContentLoaded', () => {
         if (sel) sel.addEventListener('click', (e) => { e.stopPropagation(); toggleList(table); });
     });
 
-    document.addEventListener('click', () => {
-        document.querySelectorAll('.filter-table').forEach(t => t.classList.remove('is-open'));
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.filter-table')) {
+            document.querySelectorAll('.filter-table').forEach(t => t.classList.remove('is-open'));
+        }
+    });
+}
+
+// ========== DOCTOR SYSTEM ==========
+function initializeDoctorSystem() {
+    console.log('🔧 Doctor System Initializing');
+
+    // Data
+    const data = {
+        chennai: {
+            doctor: 'Dr Suresh',
+            spec: 'General Physician',
+            type: 'youtube',
+            video: 'https://www.youtube.com/embed/ONF6w-y5JfU?autoplay=1&mute=1&loop=1&playlist=ONF6w-y5JfU'
+        },
+        delhi: {
+            doctor: 'Dr Hemant',
+            spec: 'Cardiologist',
+            type: 'youtube',
+            video: 'https://www.youtube.com/embed/7kR4VzDe5r4?autoplay=1&mute=1&loop=1&playlist=7kR4VzDe5r4'
+        },
+        mumbai: {
+            doctor: 'Sameer',
+            spec: 'Chest Specialist',
+            type: 'local',
+            video: 'mumbai.mp4'
+        }
+    };
+
+    // Elements
+    const cityDropdown = document.getElementById('city-dropdown');
+    const docDropdown = document.getElementById('doc-dropdown');
+    const cityText = document.getElementById('city-selected-text');
+    const docText = document.getElementById('doctor-selected-text');
+    const displayName = document.getElementById('display-name');
+    const displaySpec = document.getElementById('display-spec');
+    const displayIframe = document.getElementById('display-iframe');
+    const displayVideo = document.getElementById('display-video');
+    const videoSrc = document.getElementById('video-src');
+    const videoContainer = document.getElementById('video-container');
+
+    let currentCity = 'chennai';
+
+    console.log('✓ Elements loaded:', { cityDropdown: !!cityDropdown, docDropdown: !!docDropdown, displayName: !!displayName });
+
+    // Update display function
+    function updateDisplay(cityKey) {
+        console.log('📍 Updating display for:', cityKey);
+
+        if (!data[cityKey]) {
+            console.error('❌ Unknown city:', cityKey);
+            return;
+        }
+
+        const info = data[cityKey];
+        currentCity = cityKey;
+
+        // Update text
+        displayName.textContent = info.doctor;
+        displaySpec.textContent = info.spec;
+        docText.textContent = info.doctor;
+        cityText.textContent = cityKey.charAt(0).toUpperCase() + cityKey.slice(1);
+
+        console.log('📝 Updated:', info.doctor);
+
+        // Update video
+        if (info.type === 'youtube') {
+            console.log('🎥 YouTube video');
+            displayIframe.src = info.video;
+            displayIframe.style.display = 'block';
+            displayVideo.style.display = 'none';
+        } else {
+            console.log('🎬 Local video');
+            videoSrc.src = info.video;
+            displayVideo.load();
+            displayVideo.style.display = 'block';
+            displayIframe.style.display = 'none';
+            displayVideo.play().catch(() => {});
+        }
+
+        // Update dropdown visibility
+        document.querySelectorAll('.city-option').forEach(opt => {
+            opt.style.display = (opt.getAttribute('data-city') === cityKey) ? 'none' : 'block';
+        });
+
+        document.querySelectorAll('.doc-option').forEach(opt => {
+            opt.style.display = (opt.getAttribute('data-name') === info.doctor) ? 'none' : 'block';
+        });
+    }
+
+    // Attach city option clicks
+    console.log('📌 Attaching city option clicks');
+    document.querySelectorAll('.city-option').forEach((opt, idx) => {
+        opt.addEventListener('click', (e) => {
+            const cityKey = opt.getAttribute('data-city');
+            console.log('🏙️ City clicked:', cityKey);
+            e.stopPropagation();
+            e.preventDefault();
+            updateDisplay(cityKey);
+            cityDropdown.classList.remove('is-open');
+        }, false);
     });
 
-    if (docOptions.length > 0 && selectedText) {
-        docOptions.forEach(option => {
-            option.addEventListener('click', (e) => {
-                e.stopPropagation();
-                docOptions.forEach(opt => opt.style.display = 'block');
-                e.target.style.display = 'none';
+    // Attach doctor option clicks
+    console.log('📌 Attaching doctor option clicks');
+    document.querySelectorAll('.doc-option').forEach((opt, idx) => {
+        opt.addEventListener('click', (e) => {
+            const cityKey = opt.getAttribute('data-city');
+            console.log('👨‍⚕️ Doctor clicked, city:', cityKey);
+            e.stopPropagation();
+            e.preventDefault();
+            updateDisplay(cityKey);
+            docDropdown.classList.remove('is-open');
+        }, false);
+    });
 
-                const newName = e.target.getAttribute('data-name');
-                const newSpec = e.target.getAttribute('data-spec');
-                const newImg = e.target.getAttribute('data-img');
+    // Initial state
+    console.log('🚀 Initializing with Chennai');
+    updateDisplay('chennai');
+    console.log('✨ Doctor System Ready');
+}
 
-                selectedText.textContent = newName;
-                if(displayName) displayName.textContent = newName;
-                if(displaySpec) displaySpec.textContent = newSpec;
-                
-                if (displayImg) {
-                    displayImg.style.opacity = 0;
-                    setTimeout(() => {
-                        displayImg.src = newImg;
-                        displayImg.style.opacity = 1;
-                    }, 200);
-                }
+// ========== MAIN INIT ==========
+let hasInitialized = false;
 
-                e.target.closest('.filter-table').classList.remove('is-open');
-            });
-        });
+function initializeAll() {
+    if (hasInitialized) {
+        return;
     }
+    hasInitialized = true;
 
-    if (cityOptions.length > 0 && selectedCity) {
-        cityOptions.forEach(option => {
-            option.addEventListener('click', (e) => {
-                e.stopPropagation();
-                cityOptions.forEach(opt => opt.style.display = 'block');
-                e.target.style.display = 'none';
-                selectedCity.textContent = e.target.getAttribute('data-city');
-                e.target.closest('.filter-table').classList.remove('is-open');
-            });
-        });
-    }
-});
+    console.log('⏳ Initializing all systems');
+    initializeNavbar();
+    initializeScrollAnimations();
+    initializeDropdowns();
+    initializeDoctorSystem();
+    console.log('✅ ALL SYSTEMS GO');
+}
+
+// Run when ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeAll);
+} else {
+    initializeAll();
+}
+
+setTimeout(initializeAll, 100);

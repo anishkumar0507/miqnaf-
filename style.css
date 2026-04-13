@@ -83,7 +83,7 @@ button, a {
     top: 0;
     width: 100%;
     z-index: 100;
-    padding: 0.8rem 0;
+    padding: 1rem 0;
     display: flex;
     justify-content: center;
     background: url('https://www.transparenttextures.com/patterns/white-wall.png');
@@ -109,6 +109,22 @@ button, a {
 .nav-logo {
     display: flex;
     align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.nav-logo:hover {
+    transform: scale(1.15);
+}
+
+.logo-img {
+    transition: all 0.3s ease;
+    transform: scale(1.1);
+    transform-origin: center;
+}
+
+.nav-logo:hover .logo-img {
+    filter: drop-shadow(0 0 8px rgba(159, 32, 36, 0.4));
+    transform: scale(1.25);
 }
 
 .nav-links {
@@ -290,6 +306,15 @@ button, a {
 
 .hero-brand {
     margin-bottom: 4rem;
+}
+
+.hero-logo-img {
+    height: auto;
+    max-width: 500px;
+    width: 100%;
+    display: block;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
 }
 
 .hero-logo-text {
@@ -629,6 +654,13 @@ button, a {
     height: 500px;
 }
 
+.video-container {
+    width: 420px;
+    height: 500px;
+    background: transparent;
+    overflow: visible;
+}
+
 .image-container img {
     width: 100%;
     height: 100%;
@@ -664,6 +696,60 @@ button, a {
     border-radius: 25px;
     z-index: 3;
     pointer-events: none;
+}
+
+.video-container iframe,
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 25px;
+    z-index: 2;
+    object-fit: cover;
+    background: #000;
+}
+
+.video-container iframe {
+    filter: grayscale(100%);
+}
+
+.video-container video {
+    display: none;
+}
+
+.doctor-image-content .video-container {
+    position: relative;
+}
+
+#video-container {
+    width: 420px;
+    height: 500px;
+    position: relative;
+    background: transparent;
+    overflow: visible;
+    isolation: isolate;
+}
+
+#video-container::before {
+    z-index: 0;
+}
+
+#video-container::after {
+    z-index: 3;
+}
+
+#video-container iframe,
+#video-container video {
+    z-index: 2;
+    border-radius: 25px;
+}
+
+#video-container video {
+    display: none;
+    object-fit: cover;
 }
 
 .play-button-overlay {
@@ -1167,5 +1253,210 @@ button, a {
 
     .hero-brand {
         margin-bottom: 1rem;
+    }
+}
+/* ========== TESTIMONIALS SECTION ========== */
+.testimonials-section {
+    padding: 5rem 2rem !important;
+}
+
+.testimonials-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonials-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #1a2a6c;
+    margin-bottom: 3rem;
+    font-family: 'Acumin Variable', sans-serif;
+}
+
+/* Filter Dropdown */
+.testimonials-filter {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.filter-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.filter-btn {
+    padding: 12px 24px;
+    background: #29397f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    font-family: 'Acumin Variable', sans-serif;
+}
+
+.filter-btn:hover {
+    background: #1a2a6c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(41, 57, 127, 0.3);
+}
+
+.filter-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    min-width: 150px;
+    z-index: 10;
+}
+
+.filter-option {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: #333;
+    transition: all 0.2s ease;
+    font-family: 'Acumin Variable', sans-serif;
+    font-weight: 500;
+}
+
+.filter-option:hover {
+    background: #f0f0f0;
+    color: #29397f;
+}
+
+.filter-option:first-child {
+    border-radius: 8px 8px 0 0;
+}
+
+.filter-option:last-child {
+    border-radius: 0 0 8px 8px;
+}
+
+.filter-option.active {
+    background: #e8eef5;
+    color: #29397f;
+    font-weight: 700;
+}
+
+/* Testimonials Grid */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+    .testimonials-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Testimonial Card */
+.testimonial-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.testimonial-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.testimonial-card.hidden {
+    display: none;
+}
+
+.testimonial-card.fade-in {
+    animation: fadeInScale 0.4s ease-out;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.video-container {
+    width: 100%;
+    padding-top: 56.25%;
+    position: relative;
+    background: #000;
+}
+
+.video-container iframe,
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 12px 12px 0 0;
+}
+
+.video-container video {
+    border-radius: 12px 12px 0 0;
+    object-fit: cover;
+}
+
+.card-info {
+    padding: 1.5rem;
+    background: white;
+}
+
+.card-city {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+    .testimonials-title {
+        font-size: 1.8rem;
+    }
+
+    .testimonials-grid {
+        gap: 1.5rem;
+    }
+
+    .filter-btn {
+        padding: 10px 16px;
+        font-size: 0.9rem;
     }
 }

@@ -12,7 +12,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="#hero" class="nav-logo">
-                <img src="new_miqnaf_logo.png" alt="MIQNAF" style="height: 50px;">
+                <img src="MIQNAF logo.png" alt="MIQNAF" class="logo-img" style="height: 84px;">
             </a>
             
             <!-- Mobile Menu Toggle Button -->
@@ -34,10 +34,9 @@
     <section id="hero" class="hero">
         <div class="hero-content fade-in-on-scroll">
             <div class="hero-text">
-                <h1 class="hero-headline">COMPLETE COVERAGE<br>FROM ATYPICAL AND TYPICAL PATHOGENS<br>FOR YOUR PATIENTS</h1>
+                <h1 class="hero-headline">COMPLETE COVERAGE<br>FROM ATYPICAL  PATHOGENS<br>FOR YOUR PATIENTS</h1>
                 <div class="hero-brand">
-                    <h2 class="hero-logo-text">MIQNAF<sup style="font-size: 0.4em;">&reg;</sup><span class="logo-arrows"></span></h2>
-                    <h3 class="hero-subtext">Nafithromycin 800mg</h3>
+                    <img src="MIQNAF logo.png" alt="MIQNAF" class="hero-logo-img">
                 </div>
                 <div class="tagline-wrapper">
                     <span class="brand-tagline text-red">Your license for success in CABP</span>
@@ -139,29 +138,29 @@
                     </div>
 
                     <div class="dropdown-row">
-                        <div class="filter-table" id="doc-dropdown">
-                            <div class="filter-head">
-                                Doctor's Name 
-                                <svg width="10" height="6" viewBox="0 0 14 8" style="margin-top: 4px;"><polyline points="1,1 7,7 13,1" fill="none" stroke="white" stroke-width="1.5"/></svg>
-                            </div>
-                            <div class="filter-selected doc-selected" id="doctor-selected-text">Dr. Harshil Shah</div>
-                            <div class="filter-list doc-list">
-                                <div class="filter-option doc-option" data-name="Dr. Pankaj Bang" data-spec="General Physician" data-img="image copy.png">Dr. Pankaj Bang</div>
-                                <div class="filter-option doc-option" data-name="Dr. Satyey Tayde" data-spec="Cardiologist" data-img="image copy 4.png">Dr. Satyey Tayde</div>
-                                <div class="filter-option doc-option" data-name="Dr. Harshil Shah" data-spec="Chest Physician" data-img="image copy 5.png" style="display: none;">Dr. Harshil Shah</div>
-                            </div>
-                        </div>
-                        
                         <div class="filter-table" id="city-dropdown">
                             <div class="filter-head">
                                 City 
                                 <svg width="10" height="6" viewBox="0 0 14 8" style="margin-top: 4px;"><polyline points="1,1 7,7 13,1" fill="none" stroke="#111" stroke-width="1.5"/></svg>
                             </div>
-                            <div class="filter-selected city-selected" id="city-selected-text">Mumbai</div>
+                            <div class="filter-selected city-selected" id="city-selected-text">Chennai</div>
                             <div class="filter-list city-list">
-                                <div class="filter-option city-option" data-city="New Delhi">New Delhi</div>
-                                <div class="filter-option city-option" data-city="Bangalore">Bangalore</div>
-                                <div class="filter-option city-option" data-city="Mumbai" style="display: none;">Mumbai</div>
+                                <div class="filter-option city-option" data-city="chennai" style="display: none;">Chennai</div>
+                                <div class="filter-option city-option" data-city="delhi">Delhi</div>
+                                <div class="filter-option city-option" data-city="mumbai">Mumbai</div>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-table" id="doc-dropdown">
+                            <div class="filter-head">
+                                Doctor's Name 
+                                <svg width="10" height="6" viewBox="0 0 14 8" style="margin-top: 4px;"><polyline points="1,1 7,7 13,1" fill="none" stroke="white" stroke-width="1.5"/></svg>
+                            </div>
+                            <div class="filter-selected doc-selected" id="doctor-selected-text">Dr Suresh</div>
+                            <div class="filter-list doc-list">
+                                <div class="filter-option doc-option" data-name="Dr Suresh" data-spec="General Physician" data-city="chennai" data-video="https://www.youtube.com/embed/ONF6w-y5JfU" style="display: none;">Dr Suresh</div>
+                                <div class="filter-option doc-option" data-name="Dr Hemant" data-spec="Cardiologist" data-city="delhi" data-video="https://www.youtube.com/embed/7kR4VzDe5r4">Dr Hemant</div>
+                                <div class="filter-option doc-option" data-name="Sameer" data-spec="Chest Specialist" data-city="mumbai" data-video="mumbai.mp4">Sameer</div>
                             </div>
                         </div>
                     </div>
@@ -169,20 +168,18 @@
                     <div class="doctor-info">
                         <span style="color: #b22222; font-size: 1rem; margin-top: 3px;">▶</span>
                         <div>
-                            <h2 id="display-name" style="color: #9f2024; font-size: 1.7rem; font-family: 'Acumin Variable', sans-serif; font-weight: 800; margin: 0; line-height: 1;">Dr. Harshil Shah</h2>
-                            <p id="display-spec" style="color: #555; font-size: 0.9rem; font-family: 'Acumin Variable', sans-serif; margin: 2px 0 0 0;">Chest Physician</p>
+                            <h2 id="display-name" style="color: #9f2024; font-size: 1.7rem; font-family: 'Acumin Variable', sans-serif; font-weight: 800; margin: 0; line-height: 1;">Dr Suresh</h2>
+                            <p id="display-spec" style="color: #555; font-size: 0.9rem; font-family: 'Acumin Variable', sans-serif; margin: 2px 0 0 0;">General Physician</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="doctor-image-content">
-                    <div class="image-container">
-                        <img id="display-img" src="Untitled-1.png" alt="Doctor Display" class="bw-filter">
-                        <div class="play-button-overlay">
-                            <svg width="24" height="24" viewBox="0 0 30 30" style="margin-left: 3px;">
-                                <polygon points="0,0 25,15 0,30" fill="transparent" stroke="#fff" stroke-width="2" />
-                            </svg>
-                        </div>
+                    <div class="image-container video-container" id="video-container">
+                        <iframe id="display-iframe" width="100%" height="100%" src="https://www.youtube.com/embed/ONF6w-y5JfU" title="Doctor Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <video id="display-video" class="bw-filter" preload="metadata" autoplay loop muted playsinline controls>
+                            <source id="video-src" src="" type="video/mp4">
+                        </video>
                     </div>
                 </div>
             </div>
@@ -201,6 +198,6 @@
         <img src="image copy 7.png" alt="Stats and Redefining Treatment" class="stats-image fade-in-on-scroll">
     </section>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=1"></script>
 </body>
 </html>
