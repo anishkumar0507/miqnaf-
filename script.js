@@ -92,20 +92,20 @@ function initializeDoctorSystem() {
     // Data
     const data = {
         chennai: {
-            doctor: 'Dr Suresh',
-            spec: 'General Physician',
+            doctor: 'Dr Suresh Kanna S',
+            spec: 'Consultant Physician & Diabetologist',
             type: 'youtube',
-            video: 'https://www.youtube.com/embed/ONF6w-y5JfU?autoplay=1&mute=1&loop=1&playlist=ONF6w-y5JfU'
+            video: 'https://www.youtube.com/embed/Zp77D46CXmk?autoplay=1&mute=1&loop=1&playlist=Zp77D46CXmk'
         },
         delhi: {
-            doctor: 'Dr Hemant',
-            spec: 'Cardiologist',
+            doctor: 'Dr Hemant Kalra',
+            spec: 'Director - Pulmonology',
             type: 'youtube',
             video: 'https://www.youtube.com/embed/7kR4VzDe5r4?autoplay=1&mute=1&loop=1&playlist=7kR4VzDe5r4'
         },
         mumbai: {
-            doctor: 'Sameer',
-            spec: 'Chest Specialist',
+            doctor: 'Dr Sameer Garde',
+            spec: 'Interventional Pulmonologist',
             type: 'local',
             video: 'mumbai.mp4'
         }
