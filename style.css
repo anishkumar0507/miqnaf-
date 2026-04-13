@@ -712,10 +712,6 @@ button, a {
     background: #000;
 }
 
-.video-container iframe {
-    filter: grayscale(100%);
-}
-
 .video-container video {
     display: none;
 }
