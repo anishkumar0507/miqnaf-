@@ -89,26 +89,38 @@ function initializeDropdowns() {
 function initializeDoctorSystem() {
     console.log('🔧 Doctor System Initializing');
 
-    // Data
+    // Multi-doctor data by city
     const data = {
-        chennai: {
-            doctor: 'Dr Suresh Kanna S',
-            spec: 'Consultant Physician & Diabetologist',
-            type: 'youtube',
-            video: 'https://www.youtube.com/embed/Zp77D46CXmk?autoplay=1&mute=1&loop=1&playlist=Zp77D46CXmk'
-        },
-        delhi: {
-            doctor: 'Dr Hemant Kalra',
-            spec: 'Director - Pulmonology',
-            type: 'youtube',
-            video: 'https://www.youtube.com/embed/7kR4VzDe5r4?autoplay=1&mute=1&loop=1&playlist=7kR4VzDe5r4'
-        },
-        mumbai: {
-            doctor: 'Dr Sameer Garde',
-            spec: 'Interventional Pulmonologist',
-            type: 'local',
-            video: 'mumbai.mp4'
-        }
+        chennai: [
+            {
+                doctor: 'Dr Suresh Kanna S',
+                spec: 'Consultant Physician & Diabetologist',
+                type: 'youtube',
+                video: 'https://www.youtube.com/embed/Zp77D46CXmk?autoplay=1&mute=1&loop=1&playlist=Zp77D46CXmk'
+            }
+        ],
+        delhi: [
+            {
+                doctor: 'Dr Hemant Kalra',
+                spec: 'Director - Pulmonology',
+                type: 'youtube',
+                video: 'https://www.youtube.com/embed/ZQjPo5hFQMY?autoplay=1&mute=1&loop=1&playlist=ZQjPo5hFQMY'
+            }
+        ],
+        mumbai: [
+            {
+                doctor: 'Dr Sameer Garde',
+                spec: 'Interventional Pulmonologist',
+                type: 'local',
+                video: 'mumbai.mp4'
+            },
+            {
+                doctor: 'Dr Swami Pawar',
+                spec: 'Consultant Pulmonologist & ICU In-Charge',
+                type: 'youtube',
+                video: 'https://www.youtube.com/embed/DXKGLfw94k8?autoplay=1&mute=1&loop=1&playlist=DXKGLfw94k8'
+            }
+        ]
     };
 
     // Elements
@@ -121,86 +133,122 @@ function initializeDoctorSystem() {
     const displayIframe = document.getElementById('display-iframe');
     const displayVideo = document.getElementById('display-video');
     const videoSrc = document.getElementById('video-src');
-    const videoContainer = document.getElementById('video-container');
+    const docList = document.querySelector('.doc-list');
 
     let currentCity = 'chennai';
+    let currentDoctorIndex = 0;
 
     console.log('✓ Elements loaded:', { cityDropdown: !!cityDropdown, docDropdown: !!docDropdown, displayName: !!displayName });
 
-    // Update display function
-    function updateDisplay(cityKey) {
-        console.log('📍 Updating display for:', cityKey);
+    function getCityTitle(cityKey) {
+        return cityKey.charAt(0).toUpperCase() + cityKey.slice(1);
+    }
 
-        if (!data[cityKey]) {
-            console.error('❌ Unknown city:', cityKey);
+    function updateCityOptions(selectedCity) {
+        document.querySelectorAll('.city-option').forEach(opt => {
+            opt.style.display = (opt.getAttribute('data-city') === selectedCity) ? 'none' : 'block';
+        });
+    }
+
+    function renderDoctorOptions(cityKey, selectedIndex) {
+        const doctors = data[cityKey] || [];
+        if (!docList) return;
+
+        docList.innerHTML = '';
+        doctors.forEach((doctor, idx) => {
+            const opt = document.createElement('div');
+            opt.className = 'filter-option doc-option';
+            opt.setAttribute('data-city', cityKey);
+            opt.setAttribute('data-index', String(idx));
+            opt.setAttribute('data-name', doctor.doctor);
+            opt.textContent = doctor.doctor;
+            if (idx === selectedIndex) {
+                opt.style.display = 'none';
+            }
+            docList.appendChild(opt);
+        });
+    }
+
+    function updateVideoDisplay(doctorInfo) {
+        if (doctorInfo.type === 'youtube') {
+            console.log('🎥 YouTube video');
+            displayVideo.pause();
+            displayVideo.style.display = 'none';
+            displayIframe.src = doctorInfo.video;
+            displayIframe.style.display = 'block';
             return;
         }
 
-        const info = data[cityKey];
-        currentCity = cityKey;
+        console.log('🎬 Local video');
+        displayIframe.src = '';
+        displayIframe.style.display = 'none';
+        videoSrc.src = doctorInfo.video;
+        displayVideo.load();
+        displayVideo.style.display = 'block';
+        displayVideo.play().catch(() => {});
+    }
 
-        // Update text
+    function selectDoctor(cityKey, doctorIndex) {
+        const doctors = data[cityKey];
+        if (!doctors || !doctors[doctorIndex]) {
+            console.error('❌ Unknown doctor for city:', cityKey, doctorIndex);
+            return;
+        }
+
+        const info = doctors[doctorIndex];
+        currentCity = cityKey;
+        currentDoctorIndex = doctorIndex;
+
         displayName.textContent = info.doctor;
         displaySpec.textContent = info.spec;
         docText.textContent = info.doctor;
-        cityText.textContent = cityKey.charAt(0).toUpperCase() + cityKey.slice(1);
+        cityText.textContent = getCityTitle(cityKey);
 
         console.log('📝 Updated:', info.doctor);
+        updateVideoDisplay(info);
+        updateCityOptions(cityKey);
+        renderDoctorOptions(cityKey, doctorIndex);
+    }
 
-        // Update video
-        if (info.type === 'youtube') {
-            console.log('🎥 YouTube video');
-            displayIframe.src = info.video;
-            displayIframe.style.display = 'block';
-            displayVideo.style.display = 'none';
-        } else {
-            console.log('🎬 Local video');
-            videoSrc.src = info.video;
-            displayVideo.load();
-            displayVideo.style.display = 'block';
-            displayIframe.style.display = 'none';
-            displayVideo.play().catch(() => {});
+    function selectCity(cityKey) {
+        if (!data[cityKey] || data[cityKey].length === 0) {
+            console.error('❌ No doctors configured for city:', cityKey);
+            return;
         }
-
-        // Update dropdown visibility
-        document.querySelectorAll('.city-option').forEach(opt => {
-            opt.style.display = (opt.getAttribute('data-city') === cityKey) ? 'none' : 'block';
-        });
-
-        document.querySelectorAll('.doc-option').forEach(opt => {
-            opt.style.display = (opt.getAttribute('data-name') === info.doctor) ? 'none' : 'block';
-        });
+        selectDoctor(cityKey, 0);
     }
 
     // Attach city option clicks
     console.log('📌 Attaching city option clicks');
-    document.querySelectorAll('.city-option').forEach((opt, idx) => {
+    document.querySelectorAll('.city-option').forEach((opt) => {
         opt.addEventListener('click', (e) => {
             const cityKey = opt.getAttribute('data-city');
             console.log('🏙️ City clicked:', cityKey);
             e.stopPropagation();
             e.preventDefault();
-            updateDisplay(cityKey);
+            selectCity(cityKey);
             cityDropdown.classList.remove('is-open');
         }, false);
     });
 
-    // Attach doctor option clicks
+    // Attach doctor option clicks via event delegation (supports dynamic doctor list)
     console.log('📌 Attaching doctor option clicks');
-    document.querySelectorAll('.doc-option').forEach((opt, idx) => {
-        opt.addEventListener('click', (e) => {
-            const cityKey = opt.getAttribute('data-city');
-            console.log('👨‍⚕️ Doctor clicked, city:', cityKey);
-            e.stopPropagation();
-            e.preventDefault();
-            updateDisplay(cityKey);
-            docDropdown.classList.remove('is-open');
-        }, false);
+    docList?.addEventListener('click', (e) => {
+        const option = e.target.closest('.doc-option');
+        if (!option) return;
+
+        const cityKey = option.getAttribute('data-city') || currentCity;
+        const doctorIndex = Number(option.getAttribute('data-index') || '0');
+        console.log('👨‍⚕️ Doctor clicked:', cityKey, doctorIndex);
+        e.stopPropagation();
+        e.preventDefault();
+        selectDoctor(cityKey, doctorIndex);
+        docDropdown.classList.remove('is-open');
     });
 
     // Initial state
     console.log('🚀 Initializing with Chennai');
-    updateDisplay('chennai');
+    selectDoctor(currentCity, currentDoctorIndex);
     console.log('✨ Doctor System Ready');
 }
 
