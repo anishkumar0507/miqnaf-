@@ -105,7 +105,7 @@ function initializeDoctorSystem() {
                 doctor: 'Dr Sameer Garde',
                 spec: 'Interventional Pulmonologist',
                 type: 'youtube',
-                video: 'https://www.youtube.com/embed/YRqyq7Naqf8?autoplay=1&mute=1&loop=1&playlist=YRqyq7Naqf8'
+                video: 'https://www.youtube.com/embed/5K0SsBfnfa0?autoplay=1&mute=1&loop=1&playlist=5K0SsBfnfa0'
             },
             {
                 doctor: 'Dr Swami Pawar',
