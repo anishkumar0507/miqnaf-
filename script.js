@@ -99,14 +99,7 @@ function initializeDoctorSystem() {
                 video: 'https://www.youtube.com/embed/Zp77D46CXmk?autoplay=1&mute=1&loop=1&playlist=Zp77D46CXmk'
             }
         ],
-        delhi: [
-            {
-                doctor: 'Dr Sonam Solanki',
-                spec: 'Pulmonologist',
-                type: 'youtube',
-                video: 'https://www.youtube.com/embed/o1kJtgxqEh0?autoplay=1&mute=1&loop=1&playlist=o1kJtgxqEh0'
-            }
-        ],
+        delhi: [],
         mumbai: [
             {
                 doctor: 'Dr Sameer Garde',
@@ -119,6 +112,12 @@ function initializeDoctorSystem() {
                 spec: 'Consultant Pulmonologist & ICU In-Charge',
                 type: 'youtube',
                 video: 'https://www.youtube.com/embed/DXKGLfw94k8?autoplay=1&mute=1&loop=1&playlist=DXKGLfw94k8'
+            },
+            {
+                doctor: 'Dr Sonam Solanki',
+                spec: 'Pulmonologist',
+                type: 'youtube',
+                video: 'https://www.youtube.com/embed/o1kJtgxqEh0?autoplay=1&mute=1&loop=1&playlist=o1kJtgxqEh0'
             }
         ]
     };
@@ -188,6 +187,26 @@ function initializeDoctorSystem() {
         displayVideo.play().catch(() => {});
     }
 
+    function showEmptyCityState(cityKey) {
+        currentCity = cityKey;
+        currentDoctorIndex = -1;
+
+        cityText.textContent = getCityTitle(cityKey);
+        docText.textContent = 'No doctor added yet';
+        displayName.textContent = '';
+        displaySpec.textContent = '';
+        displayIframe.src = '';
+        displayIframe.style.display = 'none';
+        displayVideo.pause();
+        displayVideo.style.display = 'none';
+        if (videoSrc) {
+            videoSrc.src = '';
+        }
+
+        updateCityOptions(cityKey);
+        renderDoctorOptions(cityKey, -1);
+    }
+
     function selectDoctor(cityKey, doctorIndex) {
         const doctors = data[cityKey];
         if (!doctors || !doctors[doctorIndex]) {
@@ -211,10 +230,17 @@ function initializeDoctorSystem() {
     }
 
     function selectCity(cityKey) {
-        if (!data[cityKey] || data[cityKey].length === 0) {
-            console.error('❌ No doctors configured for city:', cityKey);
+        if (!data[cityKey]) {
+            console.error('❌ Unknown city:', cityKey);
             return;
         }
+
+        if (data[cityKey].length === 0) {
+            console.log('ℹ️ City has no doctors yet:', cityKey);
+            showEmptyCityState(cityKey);
+            return;
+        }
+
         selectDoctor(cityKey, 0);
     }
 
