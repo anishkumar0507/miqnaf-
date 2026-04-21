@@ -91,33 +91,70 @@ function initializeDoctorSystem() {
 
     // Multi-doctor data by city
     const data = {
-        chennai: [
-            {
-                doctor: 'Dr Suresh Kanna S',
-                spec: 'Consultant Physician & Diabetologist',
-                type: 'youtube',
-                video: 'https://www.youtube.com/embed/Zp77D46CXmk?autoplay=1&mute=1&loop=1&playlist=Zp77D46CXmk'
-            }
-        ],
-        delhi: [],
         mumbai: [
             {
-                doctor: 'Dr Sameer Garde',
-                spec: 'Interventional Pulmonologist',
-                type: 'youtube',
-                video: 'https://www.youtube.com/embed/5K0SsBfnfa0?autoplay=1&mute=1&loop=1&playlist=5K0SsBfnfa0'
-            },
-            {
-                doctor: 'Dr Swami Pawar',
-                spec: 'Consultant Pulmonologist & ICU In-Charge',
-                type: 'youtube',
-                video: 'https://www.youtube.com/embed/DXKGLfw94k8?autoplay=1&mute=1&loop=1&playlist=DXKGLfw94k8'
-            },
-            {
-                doctor: 'Dr Sonam Solanki',
-                spec: 'Pulmonologist',
+                doctor: 'Dr. Sonam',
+                spec: 'Chest Physician',
                 type: 'youtube',
                 video: 'https://www.youtube.com/embed/o1kJtgxqEh0?autoplay=1&mute=1&loop=1&playlist=o1kJtgxqEh0'
+            },
+            {
+                doctor: 'Dr. Sameer',
+                spec: 'Chest Physician',
+                type: 'youtube',
+                video: 'https://www.youtube.com/embed/W6a_xlcimLU?autoplay=1&mute=1&loop=1&playlist=W6a_xlcimLU'
+            },
+            {
+                doctor: 'Dr. Pawar',
+                spec: 'Chest Physician',
+                type: 'youtube',
+                video: 'https://www.youtube.com/embed/LqstEomN34A?autoplay=1&mute=1&loop=1&playlist=LqstEomN34A'
+            },
+            {
+                doctor: 'Dr. Harshal Shah',
+                spec: 'Chest Physician',
+                type: 'youtube',
+                video: 'https://www.youtube.com/embed/aCgRBnfue6o?autoplay=1&mute=1&loop=1&playlist=aCgRBnfue6o'
+            },
+            {
+                doctor: 'Dr. Pankaj Bang',
+                spec: 'Chest Physician',
+                type: 'youtube',
+                video: 'https://www.youtube.com/embed/Fk-NmlGfqE4?autoplay=1&mute=1&loop=1&playlist=Fk-NmlGfqE4'
+            },
+            {
+                doctor: 'Dr. Satyey G. Tayade',
+                spec: 'Chest Physician',
+                type: 'youtube',
+                video: 'https://www.youtube.com/embed/fZbT5g0hFTQ?autoplay=1&mute=1&loop=1&playlist=fZbT5g0hFTQ'
+            },
+            {
+                doctor: 'Dr. Parag Mehta',
+                spec: 'Chest Specialist',
+                type: 'youtube',
+                video: 'https://www.youtube.com/embed/64zcRFUmGDM?autoplay=1&mute=1&loop=1&playlist=64zcRFUmGDM'
+            }
+        ],
+        chennai: [
+            {
+                doctor: 'Dr. Suresh',
+                spec: 'Chest Physician',
+                type: 'youtube',
+                video: 'https://www.youtube.com/embed/ONF6w-y5JfU?autoplay=1&mute=1&loop=1&playlist=ONF6w-y5JfU'
+            }
+        ],
+        punjab: [
+            {
+                doctor: 'Dr. Ajaypal Singh',
+                spec: 'Chest Physician',
+                type: 'youtube',
+                video: 'https://www.youtube.com/embed/vwEUY4pp9ok?autoplay=1&mute=1&loop=1&playlist=vwEUY4pp9ok'
+            },
+            {
+                doctor: 'Dr. Mohit Kaushal',
+                spec: 'Consultant Pulmonology & Critical Care',
+                type: 'youtube',
+                video: 'https://www.youtube.com/embed/5Xg_E1EMlxI?autoplay=1&mute=1&loop=1&playlist=5Xg_E1EMlxI'
             }
         ]
     };
@@ -134,7 +171,7 @@ function initializeDoctorSystem() {
     const videoSrc = document.getElementById('video-src');
     const docList = document.querySelector('.doc-list');
 
-    let currentCity = 'chennai';
+    let currentCity = 'mumbai';
     let currentDoctorIndex = 0;
 
     console.log('✓ Elements loaded:', { cityDropdown: !!cityDropdown, docDropdown: !!docDropdown, displayName: !!displayName });
@@ -273,7 +310,7 @@ function initializeDoctorSystem() {
     });
 
     // Initial state
-    console.log('🚀 Initializing with Chennai');
+    console.log('🚀 Initializing with Mumbai');
     selectDoctor(currentCity, currentDoctorIndex);
     console.log('✨ Doctor System Ready');
 }
