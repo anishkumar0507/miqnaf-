@@ -93,19 +93,19 @@ function initializeDoctorSystem() {
     const data = {
         mumbai: [
             {
-                doctor: 'Dr. Sonam',
-                spec: 'Chest Physician',
+                doctor: 'Dr. Sonam Solanki',
+                spec: 'Pulmonologist',
                 type: 'youtube',
                 video: 'https://www.youtube.com/embed/o1kJtgxqEh0?autoplay=1&mute=1&loop=1&playlist=o1kJtgxqEh0'
             },
             {
-                doctor: 'Dr. Sameer',
+                doctor: 'Dr. Sameer Garde',
                 spec: 'Chest Physician',
                 type: 'youtube',
                 video: 'https://www.youtube.com/embed/W6a_xlcimLU?autoplay=1&mute=1&loop=1&playlist=W6a_xlcimLU'
             },
             {
-                doctor: 'Dr. Pawar',
+                doctor: 'Dr. Swami Pawar',
                 spec: 'Chest Physician',
                 type: 'youtube',
                 video: 'https://www.youtube.com/embed/LqstEomN34A?autoplay=1&mute=1&loop=1&playlist=LqstEomN34A'
@@ -130,14 +130,14 @@ function initializeDoctorSystem() {
             },
             {
                 doctor: 'Dr. Parag Mehta',
-                spec: 'Chest Specialist',
+                spec: 'Chest specialist',
                 type: 'youtube',
                 video: 'https://www.youtube.com/embed/64zcRFUmGDM?autoplay=1&mute=1&loop=1&playlist=64zcRFUmGDM'
             }
         ],
         chennai: [
             {
-                doctor: 'Dr. Suresh',
+                doctor: 'Dr. Suresh Kanna S',
                 spec: 'Chest Physician',
                 type: 'youtube',
                 video: 'https://www.youtube.com/embed/ONF6w-y5JfU?autoplay=1&mute=1&loop=1&playlist=ONF6w-y5JfU'
