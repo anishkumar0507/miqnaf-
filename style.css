@@ -44,7 +44,7 @@ html {
 }
 
 body {
-    background-color: #f6f6f6;
+    background-color: #f5f5f5;
     font-family: 'Acumin Variable', sans-serif;
     color: var(--text-dark);
     line-height: 1.6;
@@ -441,6 +441,14 @@ button, a {
     transform: scale(1.08);
 }
 
+.empty-image-space {
+    width: min(850px, 72vw);
+    aspect-ratio: 4 / 3;
+    border: 3px dashed rgba(255, 255, 255, 0.55);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
 .slide-text {
     flex: 1;
     color: var(--text-light);
@@ -771,6 +779,7 @@ button, a {
     margin: 0;
     display: block;
     overflow: hidden;
+    background: #f6f6f6;
 }
 
 .about-container {
@@ -794,6 +803,13 @@ button, a {
     margin: 0;
     display: block;
     overflow: hidden;
+    background: #f6f6f6;
+}
+
+.stats-wrapper {
+    position: relative;
+    width: 100%;
+    display: block;
 }
 
 .stats-image {
@@ -801,6 +817,126 @@ button, a {
     height: auto;
     display: block;
     max-width: none;
+}
+
+.stats-qr-overlay {
+    position: absolute;
+    right: 2.5rem;
+    bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+    z-index: 2;
+}
+
+.stats-qr-box {
+    width: 118px;
+    height: 118px;
+    border-radius: 14px;
+    border: 1px solid #e5e8f0;
+    background: linear-gradient(135deg, #f5f5f5 0%, #f5f5f5 100%);
+    box-shadow: 0 4px 16px rgba(41, 57, 127, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stats-qr-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+.stats-qr-label {
+    font-family: 'Acumin Variable', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: #1a2a6c;
+    margin: 0;
+    font-weight: 700;
+}
+
+.stats-references {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 2rem 2rem 7rem;
+    gap: 2rem;
+}
+
+.stats-ref-heading {
+    margin: 0 0 0.35rem 0;
+    text-align: left;
+    font-family: 'Acumin Variable', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #1a2a6c;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.ref-item {
+    flex: 1;
+    text-align: left;
+}
+
+.ref-item-2 {
+    transform: translateX(-6rem);
+}
+
+.ref-text {
+    font-size: 0.75rem;
+    color: #333;
+    font-family: 'Helvetica Neue', sans-serif;
+    line-height: 1.4;
+    margin: 0;
+    font-weight: 500;
+}
+
+.ref-text sup {
+    color: #991f25;
+    font-weight: 700;
+}
+
+@media (max-width: 992px) {
+    .stats-qr-overlay {
+        right: 1.2rem;
+        bottom: 1.2rem;
+    }
+
+    .stats-qr-box {
+        width: 98px;
+        height: 98px;
+        padding: 10px;
+    }
+
+    .stats-qr-label {
+        font-size: 0.6rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .stats-qr-overlay {
+        right: 0.8rem;
+        bottom: 0.8rem;
+    }
+
+    .stats-qr-box {
+        width: 84px;
+        height: 84px;
+        padding: 8px;
+    }
+
+    .stats-qr-label {
+        display: none;
+    }
 }
 
 /* STATS SECTION UPDATE END */
@@ -815,6 +951,151 @@ button, a {
 .fade-in-on-scroll.in-view {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* ============ FLOATING ANIMATION (PREMIUM) ============ */
+@keyframes float-subtle {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* ============ PROFESSIONAL PHARMA FOOTER ============ */
+
+.pharma-footer {
+    background: url('https://www.transparenttextures.com/patterns/white-wall.png'), #ffffff;
+    background-size: auto, 100%;
+    background-attachment: scroll, scroll;
+    border-top: 2px solid var(--blue-section);
+    padding: 1.75rem 2rem 1.5rem;
+    margin-top: 2rem;
+}
+
+.footer-container {
+    max-width: 1440px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 5rem;
+    margin-bottom: 4rem;
+    min-height: 180px;
+}
+
+.references-section {
+    flex: 1;
+    min-width: 0;
+}
+
+.references-title {
+    font-family: 'Acumin Variable', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--blue-section);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.9;
+}
+
+.references-list {
+    list-style: decimal;
+    list-style-position: outside;
+    margin-left: 1.5rem;
+    font-size: 0.8rem;
+    line-height: 1.9;
+    color: #555555;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+.references-list li {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.references-list em {
+    font-style: italic;
+    font-weight: 500;
+    color: #666666;
+}
+
+.footer-disclaimer {
+    font-size: 0.7rem;
+    color: #888888;
+    margin-top: 2rem;
+    font-style: italic;
+    line-height: 1.7;
+    letter-spacing: 0.2px;
+}
+
+.qr-section {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1.2rem;
+}
+
+.qr-code-container {
+    background: linear-gradient(135deg, #f8f9fc 0%, #f3f5fa 100%);
+    border: 1px solid #e5e8f0;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(41, 57, 127, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+    width: 160px;
+    height: 160px;
+    animation: float-subtle 3.5s ease-in-out infinite;
+    transition: box-shadow 0.3s ease;
+}
+
+.qr-code-container:hover {
+    box-shadow: 0 6px 24px rgba(41, 57, 127, 0.12), 0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+.qr-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+.qr-placeholder {
+    display: none;
+}
+
+.qr-label {
+    font-family: 'Acumin Variable', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--blue-section);
+    text-align: center;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    opacity: 0.85;
+}
+
+.footer-bottom {
+    border-top: 1px solid #f0f0f0;
+    padding-top: 2rem;
+    text-align: center;
+}
+
+.copyright-text {
+    font-size: 0.7rem;
+    color: #aaaaaa;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.3px;
 }
 
 /* ============ MOBILE RESPONSIVE DESIGN ============ */
@@ -1040,6 +1321,103 @@ button, a {
     .doctor-info p {
         font-size: 0.82rem;
     }
+
+    /* Footer Mobile */
+    .pharma-footer {
+        padding: 1.25rem 1.25rem 1rem;
+        margin-top: 1.5rem;
+        border-top: 1px solid var(--blue-section);
+    }
+
+    .footer-content {
+        flex-direction: row;
+        gap: 2.5rem;
+        align-items: flex-end;
+        margin-bottom: 2.5rem;
+        justify-content: flex-start;
+        min-height: 140px;
+    }
+
+    .references-section {
+        width: 100%;
+        order: 1;
+        text-align: center;
+    }
+
+    .references-title {
+        font-size: 0.9rem;
+        margin-bottom: 1.2rem;
+        letter-spacing: 0.8px;
+    }
+
+    .references-list {
+        font-size: 0.75rem;
+        line-height: 1.8;
+        margin-left: 0;
+        list-style-position: inside;
+        color: #666666;
+    }
+
+    .references-list li {
+        margin-bottom: 0.8rem;
+        text-align: center;
+    }
+
+    .footer-disclaimer {
+        font-size: 0.65rem;
+        margin-top: 1.5rem;
+    }
+
+    .qr-section {
+        order: 2;
+        width: 100%;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .qr-code-container {
+        width: 140px;
+        height: 140px;
+        animation: float-subtle 3.5s ease-in-out infinite;
+    }
+
+    .qr-label {
+        font-size: 0.7rem;
+        letter-spacing: 0.4px;
+    }
+
+    .footer-bottom {
+        padding-top: 1.5rem;
+    }
+
+    .copyright-text {
+        font-size: 0.65rem;
+    }
+}
+
+/* Tablets and Medium devices (641px - 992px) */
+@media (max-width: 992px) and (min-width: 641px) {
+    /* Hero Section */
+        margin-top: 1rem;
+    }
+
+    .qr-code-container {
+        width: 140px;
+        height: 140px;
+    }
+
+    .qr-placeholder svg {
+        width: 110px;
+        height: 110px;
+    }
+
+    .qr-label {
+        font-size: 0.85rem;
+    }
+
+    .copyright-text {
+        font-size: 0.7rem;
+    }
 }
 
 /* Tablets and Medium devices (641px - 992px) */
@@ -1254,6 +1632,53 @@ button, a {
     .filter-list {
         max-height: 200px;
         overflow-y: auto;
+    }
+
+    /* Footer Tablet */
+    .pharma-footer {
+        padding: 1.5rem 1.5rem 1.25rem;
+        margin-top: 1.75rem;
+    }
+
+    .footer-content {
+        flex-direction: row;
+        gap: 3rem;
+        align-items: flex-end;
+        margin-bottom: 3rem;
+    }
+
+    .references-section {
+        flex: 1;
+    }
+
+    .references-title {
+        font-size: 0.95rem;
+        letter-spacing: 0.8px;
+    }
+
+    .references-list {
+        font-size: 0.78rem;
+        line-height: 1.8;
+    }
+
+    .references-list li {
+        margin-bottom: 0.9rem;
+    }
+
+    .qr-section {
+        flex: 0 0 auto;
+        gap: 1rem;
+    }
+
+    .qr-code-container {
+        width: 150px;
+        height: 150px;
+        animation: float-subtle 3.5s ease-in-out infinite;
+    }
+
+    .qr-label {
+        font-size: 0.75rem;
+        letter-spacing: 0.5px;
     }
 }
 
