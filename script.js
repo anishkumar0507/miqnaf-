@@ -96,19 +96,19 @@ function initializeDoctorSystem() {
                 doctor: 'Dr. Sonam Solanki',
                 spec: 'Pulmonologist',
                 type: 'youtube',
-                video: 'https://www.youtube.com/embed/lhhNOGOuf0A?autoplay=1&mute=1&loop=1&playlist=lhhNOGOuf0A'
+                video: 'https://www.youtube.com/embed/FF3wlitEUNg?autoplay=1&mute=1&loop=1&playlist=FF3wlitEUNg'
             },
             {
                 doctor: 'Dr. Sameer Garde',
                 spec: 'Chest Physician',
                 type: 'youtube',
-                video: 'https://www.youtube.com/embed/FF3wlitEUNg?autoplay=1&mute=1&loop=1&playlist=FF3wlitEUNg'
+                video: 'https://www.youtube.com/embed/gT3PUzvlQ_0?autoplay=1&mute=1&loop=1&playlist=gT3PUzvlQ_0'
             },
             {
                 doctor: 'Dr. Swami Pawar',
                 spec: 'Chest Physician',
                 type: 'youtube',
-                video: 'https://www.youtube.com/embed/gT3PUzvlQ_0?autoplay=1&mute=1&loop=1&playlist=gT3PUzvlQ_0'
+                video: 'https://www.youtube.com/embed/gLCQwXNmJPU?autoplay=1&mute=1&loop=1&playlist=gLCQwXNmJPU'
             },
             {
                 doctor: 'Dr. Harshal Shah',
@@ -140,7 +140,7 @@ function initializeDoctorSystem() {
                 doctor: 'Dr. Suresh Kanna S',
                 spec: 'Chest Physician',
                 type: 'youtube',
-                video: 'https://www.youtube.com/embed/gLCQwXNmJPU?autoplay=1&mute=1&loop=1&playlist=gLCQwXNmJPU'
+                video: 'https://www.youtube.com/embed/lhhNOGOuf0A?autoplay=1&mute=1&loop=1&playlist=lhhNOGOuf0A'
             }
         ],
         punjab: [
